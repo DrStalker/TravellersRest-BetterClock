@@ -10,18 +10,18 @@ Adding Traveller's Rest to Nexus Mods is in progress, until that is complete you
 
 ## How to install mods:
 
-    Install [Bepinex](https://github.com/BepInEx/BepInEx/releases/tag/v5.4.23.2)﻿ (Stable version 5.4 for Windows 64)
-    Start the game, quit the game after it finishes loading
-    This will create a Bepinex config file and a plugins folder that you can put additional mods in
-    (optional) Enable the Bepinex Console (see the detailed guide or the Bepinex documentation for steps)
-    Copy the mod .dll to the plugins directory.
+* Install [Bepinex](https://github.com/BepInEx/BepInEx/releases/tag/v5.4.23.2)﻿ (Stable version 5.4 for Windows 64)
+* Start the game, quit the game after it finishes loading
+* This will create a Bepinex config file and a plugins folder that you can put additional mods in
+* (optional) Enable the Bepinex Console (see the detailed guide or the Bepinex documentation for steps)
+* Copy the mod .dll to the plugins directory.
 
 
 ## How to change mod settings:
 
-    Install the mod and start the game.
-    Bepinex will create a file in the \BepInEx\config\ with default settings for the mod.
-    Exit the game, edit the config file, restart the game.
+* Install the mod and start the game.
+* Bepinex will create a file in the \BepInEx\config\ with default settings for the mod.
+* Exit the game, edit the config file, restart the game.
 
 
 ## Is this mod save to add/remove mid play-through?
