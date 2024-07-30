@@ -16,13 +16,16 @@ namespace BetterClock
         internal static ManualLogSource Log;
         
         private static ConfigEntry<bool> _debugLogging;
+        private static ConfigEntry<int> _ticksToUpdate; //To avoid calling reflection every frame... doesn't really matter if the clock lags slightly a few frames behind the real time
 
-        public static GameDate reflectedCurrentTime;
+        public static GameDate betterClockTime;
+        public static int tick = 0;
+
 
         public Plugin()
         { 
-            _debugLogging = Config.Bind("Debug", "Debug Logging", false, "Logs additional information to console"); 
-
+            _debugLogging  = Config.Bind("Debug", "Debug Logging", false, "Logs additional information to console");
+            _ticksToUpdate = Config.Bind("General", "Ticks Between Updates", 10, "only update the time data every X frames");
 
         }
         
@@ -31,9 +34,6 @@ namespace BetterClock
             // Plugin startup logic
             Log = Logger;
             _harmony = Harmony.CreateAndPatchAll(typeof(Plugin));
-            //How to find the "Worldtime" object?
-            //Unity Scene DontDestroyOnLoad contains object "Management" which contain component "WorldTime" but I can't figure out how to access that via C#
-            //reflectedCurrentTime = Traverse.Create(WorldTime).Field("currentGameDate").GetValue<GameDate>();
             Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
         }
         
@@ -57,7 +57,14 @@ namespace BetterClock
         static void WorldTimeUpdatePostfix(WorldTime __instance)
         {
             //DebugLog("WorldTimeUpdatePostfix Postfix");
-            reflectedCurrentTime = Traverse.Create(__instance).Field("currentGameDate").GetValue<GameDate>();
+            if (++tick > _ticksToUpdate.Value)
+            {
+                tick -= _ticksToUpdate.Value;
+                betterClockTime = Traverse.Create(__instance).Field("currentGameDate").GetValue<GameDate>();
+
+            }
+
+            
 
 
         }
@@ -77,12 +84,12 @@ namespace BetterClock
 
 
 
-            GameDate timeNow = reflectedCurrentTime;
-            int h = timeNow.hour;
-            int m = timeNow.min - timeNow.min % 5;
-            int w = timeNow.week;
-            string weekday = timeNow.day.ToString();
-            int dayofmonth = (int)(timeNow.week * GameDate.DAY_IN_WEEK + timeNow.day + 1);  // Copied existing code, which accounts for weeks with a nuimber of days other than 7
+
+            int h = betterClockTime.hour;
+            int m = betterClockTime.min - betterClockTime.min % 5;
+            int w = betterClockTime.week;
+            string weekday = betterClockTime.day.ToString(); // This skips localization, but getting it to use the localaization functions looks difficult
+            int dayofmonth = (int)(betterClockTime.week * GameDate.DAY_IN_WEEK + betterClockTime.day + 1);  // Copied existing code, which accounts for weeks with a nuimber of days other than 7
 
             string hx = h < 10 ? "0" + h.ToString() : "" + h.ToString();
             string mx = m < 10 ? "0" + m.ToString() : "" + m.ToString();
