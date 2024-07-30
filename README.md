@@ -2,6 +2,8 @@
 
 An improved time display that shows the hour and day at all times, instead of slowly swapping between them.
 
+![Better Clock preview image](https://github.com/DrStalker/TravellersRest-BetterClock/blob/main/images/clocksmall.png?raw=true)
+
 ## Downloading the mod
 
 Adding Traveller's Rest to Nexus Mods is in progress, until that is complete you can download the mod from [compiled-releases](https://github.com/DrStalker/TravellersRest-BetterClock/tree/main/compiled-releases)
