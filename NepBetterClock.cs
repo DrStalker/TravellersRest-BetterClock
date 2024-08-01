@@ -74,21 +74,21 @@ namespace BetterClock
                     gameSpeed = SpeedState.fast;
                     gameSpeedText = "+";
                     WorldTime.multiplierDevConsole =_speedMultFast.Value;
-                    MainUI.ShowErrorText(1, "Speed: Fast");
+                    //MainUI.ShowErrorText(1, "Speed: Fast");
                 }
                 else if (gameSpeed == SpeedState.fast)
                 {
                     gameSpeed = SpeedState.slow;
                     gameSpeedText = "-";
                     WorldTime.multiplierDevConsole = _speedMultSlow.Value;
-                    MainUI.ShowErrorText(1, "Speed: Slow");
+                    //MainUI.ShowErrorText(1, "Speed: Slow");
                 }
                 else if (gameSpeed == SpeedState.slow)
                 {
                     gameSpeed = SpeedState.normal;
                     gameSpeedText = "";
                     WorldTime.multiplierDevConsole = 1.0f;
-                    MainUI.ShowErrorText(1, "Speed: Normal");
+                    //MainUI.ShowErrorText(1, "Speed: Normal");
                 }
                 else
                 {
