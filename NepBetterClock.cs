@@ -22,6 +22,7 @@ namespace BetterClock
         private readonly ConfigEntry<KeyCode> _speedHotKey;
         private static ConfigEntry<float> _speedMultSlow;
         private static ConfigEntry<float> _speedMultFast;
+        private static ConfigEntry<bool> _ThreeCharDays;
         public static GameDate betterClockTime;
         public static int tick = 0;
 
@@ -37,6 +38,7 @@ namespace BetterClock
             _speedHotKey = Config.Bind("Speed Control", "hotkey", KeyCode.F9, "Press to toggle between normal/fast/slow speeds");
             _speedMultSlow = Config.Bind("Speed Control", "Slow Speed", 0.2f, "Clock speed multiplier in Slow mode");
             _speedMultFast = Config.Bind("Speed Control", "Fast Speed", 5.0f, "Clock speed multiplier in Fast mode");
+            _ThreeCharDays = Config.Bind("General", "Three Character Days", false, "Shows 'Wed' instead of 'We' etc.");
             myWorldTime = FindObjectOfType<WorldTime>();
             
         }
@@ -131,7 +133,8 @@ namespace BetterClock
             int h = betterClockTime.hour;
             int m = betterClockTime.min - betterClockTime.min % 5;
             int w = betterClockTime.week;
-            string weekday = betterClockTime.day.ToString().Substring(0,2); // This skips localization, but getting it to use the localaization functions looks difficult
+            int dayLength = _ThreeCharDays.Value ? 3 : 2;
+            string weekday = betterClockTime.day.ToString().Substring(0, dayLength); // This skips localization, but getting it to use the localaization functions looks difficult
             int dayofmonth = (int)(betterClockTime.week * GameDate.DAY_IN_WEEK + betterClockTime.day + 1);  // Copied existing code, which accounts for weeks with a nuimber of days other than 7
 
             string hx = h < 10 ? "0" + h.ToString() : "" + h.ToString();
