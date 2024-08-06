@@ -1,9 +1,8 @@
 # TravellersRest-BetterClock
 
-An improved time display that shows the hour and day at all times, instead of slowly swapping between them.
+A Traveller's Rest mod that changes the changes the clock to always display the time and date, instead of always showing the one you don't want to see forcing you to stare at the clock waiting for it to change.
 
-New in version 1.1: You can now configure a hotkey (default: F9) to toggle beteen normal times, time moving 5x faster and time moving 5x slower.  The hotkey and fast/slow speeds can be changed in the mod settings.  When the time is runing fast/slow a +/- will be added to the end of the time display.
-
+New in version 1.1: You can now configure a hotkey (default: F9) to toggle between normal times, time moving 5x faster and time moving 5x slower. The hotkey and fast/slow speeds can be changed in the mod  settings. When the time is running fast/slow a +/- character will be added to the end of the time display.
 
 ![Better Clock preview image](https://github.com/DrStalker/TravellersRest-BetterClock/blob/main/images/clocksmall.png?raw=true)
 
