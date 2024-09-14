@@ -4,6 +4,8 @@ A Traveller's Rest mod that changes the changes the clock to always display the 
 
 New in version 1.1: You can now configure a hotkey (default: F9) to toggle between normal times, time moving 5x faster and time moving 5x slower. The hotkey and fast/slow speeds can be changed in the mod  settings. When the time is running fast/slow a +/- character will be added to the end of the time display.
 
+New in version 1.2: By popular request, you can now set a key to pause time.  This is not very well tested. It probably breaks some things that relay on time moving forward.  Have fun!
+
 ![Better Clock preview image](https://github.com/DrStalker/TravellersRest-BetterClock/blob/main/images/clocksmall.png?raw=true)
 
 ## Downloading the mod
